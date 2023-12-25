@@ -182,7 +182,7 @@ $messages = $model->get_messages();
                         var tr = $('#target-message-' + send['id']).closest('tr');
                         tr.find('td:eq(2)').html(data.model['content']);
                         tr.addClass('animated flash');
-                        tr.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
+                        tr.on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
                             tr.removeClass('animated flash');
                         });
                     }

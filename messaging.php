@@ -10,7 +10,7 @@ Text Domain: private_messaging
 */
 
 /*
-Copyright 2020 WMS N@W (https://n3rds.work)
+Copyright 2020-2024 WMS N@W (https://n3rds.work)
 Autor – DerN3rd (WMS N@W)
 
 This program is free software; you can redistribute it and/or modify
@@ -26,6 +26,15 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 */
+
+require 'psource/psource-plugin-update/psource-plugin-updater.php';
+use Psource\PluginUpdateChecker\v5\PucFactory;
+$MyUpdateChecker = PucFactory::buildUpdateChecker(
+	'https://n3rds.work/wp-update-server/?action=get_metadata&slug=ps-messaging', 
+	__FILE__, 
+	'ps-messaging' 
+);
+
 if (!class_exists('MMessaging')) {
     require_once(dirname(__FILE__) . '/framework/loader.php');
 
@@ -131,12 +140,11 @@ if (!class_exists('MMessaging')) {
                             }
                         }
                     }
-                    break;
+                break;
             }
         }
 
-        function can_upload()
-        {
+        function can_upload(){
             if (!is_user_logged_in()) {
                 return false;
             }
@@ -158,8 +166,7 @@ if (!class_exists('MMessaging')) {
             return false;
         }
 
-        function compress_assets($css = array(), $js = array(), $write_path)
-        {
+        function compress_assets($css = array(), $js = array(), $write_path){
             if (defined('DOING_AJAX') && DOING_AJAX)
                 return;
 
@@ -228,13 +235,11 @@ if (!class_exists('MMessaging')) {
 
         }
 
-        function compress_css($path)
-        {
+        function compress_css($path){
 
         }
 
-        function can_compress()
-        {
+        function can_compress() {
             return false;
 
             $runtime_path = $this->plugin_path . 'framework/runtime';
@@ -621,10 +626,3 @@ CREATE TABLE IF NOT EXISTS `{$wpdb->base_prefix}mm_conversation` (
     }
 
 }
-
-require 'lib/plugin-update-checker/plugin-update-checker.php';
-$MyUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
-	'https://n3rds.work//wp-update-server/?action=get_metadata&slug=ps-messaging', //Metadata URL.
-	__FILE__, //Full path to the main plugin file.
-	'ps-messaging' //Plugin slug. Usually it's the same as the name of the directory.
-);

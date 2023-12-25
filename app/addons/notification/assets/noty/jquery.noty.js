@@ -112,7 +112,7 @@
                 self.options.theme.callback.onShow.apply(this);
 
             if($.inArray('click', self.options.closeWith) > -1)
-                self.$bar.css('cursor', 'pointer').one('click', function(evt) {
+                self.$bar.css('cursor', 'pointer').on('click', function(evt) {
                     self.stopPropagation(evt);
                     if(self.options.callback.onCloseClick) {
                         self.options.callback.onCloseClick.apply(self);
@@ -121,12 +121,12 @@
                 });
 
             if($.inArray('hover', self.options.closeWith) > -1)
-                self.$bar.one('mouseenter', function() {
+                self.$bar.on('mouseenter', function() {
                     self.close();
                 });
 
             if($.inArray('button', self.options.closeWith) > -1)
-                self.$closeButton.one('click', function(evt) {
+                self.$closeButton.on('click', function(evt) {
                     self.stopPropagation(evt);
                     self.close();
                 });
@@ -139,7 +139,7 @@
 
             if (typeof self.options.animation.open == 'string') {
                 self.$bar.css('height', self.$bar.innerHeight());
-                self.$bar.show().addClass(self.options.animation.open).one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+                self.$bar.show().addClass(self.options.animation.open).on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
                     if(self.options.callback.afterShow) self.options.callback.afterShow.apply(self);
                     self.showing = false;
                     self.shown = true;
@@ -203,7 +203,7 @@
             }
 
             if (typeof self.options.animation.close == 'string') {
-                self.$bar.addClass(self.options.animation.close).one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+                self.$bar.addClass(self.options.animation.close).on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
                     if(self.options.callback.afterClose) self.options.callback.afterClose.apply(self);
                     self.closeCleanUp();
                 });
@@ -243,7 +243,7 @@
 
                 if (typeof self.options.animation.close == 'string') {
                     self.$bar.css('transition', 'all 100ms ease').css('border', 0).css('margin', 0).height(0);
-                    self.$bar.one('transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd', function() {
+                    self.$bar.on('transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd', function() {
                         self.$bar.remove();
                         self.$bar = null;
                         self.closed = true;
