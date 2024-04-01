@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Autor: WMS N@W
+ * Autor: PSOURCE
  * Name: Berechtigungen
  * Beschreibung: Beschränke die Sendefunktionen auf bestimmte WordPress-Rollen.
  */

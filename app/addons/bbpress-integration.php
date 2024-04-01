@@ -1,6 +1,6 @@
 <?php
 /**
- * Autor: WMS N@W
+ * Autor: PSOURCE
  * Name: bbPress Integration
  * Beschreibung: Makellose Integration mit BBpress.
  */

@@ -8,7 +8,7 @@ jQuery.fn.serializeAssoc = function() {
             var subKey = a[2];
             if( !data[subName] ) data[subName] = [ ];
             if( data[subName][subKey] ) {
-                if( jQuery.isArray( data[subName][subKey] ) ) {
+                if( Array.isArray( data[subName][subKey] ) ) {
                     data[subName][subKey].push( obj.value );
                 } else {
                     data[subName][subKey] = [ ];

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Autor: WMS N@W
+ * Autor: PSOURCE
  * Name: Blockliste
  * Beschreibung: Ermöglicht Benutzern das Blockieren von Nachrichten eines anderen Benutzers.
  */

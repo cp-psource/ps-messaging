@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Autor: WMS N@W
+ * Autor: PSOURCE
  * Name: Gruppengespräch (Beta)
  * Beschreibung: Aktiviere Gruppenkonversationen und Einladungen, um an einer Gruppenkonversation teilzunehmen.
  */

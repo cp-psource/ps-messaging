@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Autor: WMS N@W
+ * Autor: PSOURCE
  * Name: Broadcast
  * Beschreibung: Erstelle Nachrichten vom Administrator und sende sie an alle Benutzer.
  */

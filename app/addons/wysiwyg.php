@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Autor: WMS N@W
+ * Autor: PSOURCE
  * Name: WYISWYG
  * Beschreibung: Fügt dem Nachrichtenkomponisten einen WYSIWYG-Editor hinzu.
  */

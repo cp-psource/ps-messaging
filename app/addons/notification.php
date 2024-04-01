@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Autor: WMS N@W
+ * Autor: PSOURCE
  * Name: Benachrichtigungen
  * Beschreibung: Zeige eine visuelle Benachrichtigung für Benutzer an, wenn eine neue Nachricht empfangen wird.
  */

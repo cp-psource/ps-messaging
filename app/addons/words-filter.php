@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Autor: WMS N@W
+ * Autor: PSOURCE
  * Name: Nachrichtenfilter
  * Beschreibung: Ermögliche Benutzern das Filtern von Nachrichten (unabhängig von den Parametern, mit denen sie filtern können)
  * Icon:fa-user-secret
