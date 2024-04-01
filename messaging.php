@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: PS-Messaging
-Plugin URI: https://n3rds.work/piestingtal-source-project/ps-messaging/
+Plugin URI: https://cp-psource.github.io/ps-messaging/
 Description: Private Benutzer-zu-Benutzer-Kommunikation zum Abgeben von Geboten, zum Teilen von Projektspezifikationen und zur versteckten internen Kommunikation. Komplett mit Front-End-Integration, geschützten Kontaktinformationen und geschützter Dateifreigabe.
 Author: PSOURCE
 Version: 1.1.1
