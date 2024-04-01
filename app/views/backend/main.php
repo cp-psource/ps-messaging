@@ -24,7 +24,7 @@
 </div>
 <script type="text/javascript">
     jQuery(function ($) {
-        $('.lock-conv').click(function (e) {
+        $(document).on('click', '.lock-conv', function (e) {
             e.preventDefault();
             var that = $(this);
             $.ajax({
@@ -36,14 +36,14 @@
                     id: that.data('id')
                 },
                 beforeSend: function () {
-                    that.attr('disabled', 'disabled')
+                    that.prop('disabled', true);
                 },
                 success: function (data) {
-                    that.removeAttr('disabled');
+                    that.prop('disabled', false);
                     that.data('type', data.type);
-                    that.html(data.text)
+                    that.html(data.text);
                 }
-            })
-        })
-    })
+            });
+        });
+    });
 </script>

@@ -79,7 +79,7 @@
 </div>
 <script type="text/javascript">
     jQuery(document).ready(function ($) {
-        $('.mm-plugin').click(function (e) {
+        $(document).on('click', '.mm-plugin', function (e) {
             var that = $(this);
             e.preventDefault();
             $.ajax({
@@ -89,7 +89,7 @@
                     action: 'mm_plugin_action',
                     id: $(this).data('id')
                 },
-                beforeSend:function(){
+                beforeSend: function () {
                     that.find('.loader-ani').removeClass('hide');
                 },
                 success: function (data) {
@@ -98,9 +98,10 @@
                     $('.plugin-status').removeClass('hide');
                     that.text(data.text);
                 }
-            })
+            });
         });
-        $('.mm-create-page').click(function (e) {
+
+        $(document).on('click', '.mm-create-page', function (e) {
             var that = $(this);
             $.ajax({
                 type: 'POST',
@@ -110,7 +111,7 @@
                 },
                 url: '<?php echo admin_url('admin-ajax.php') ?>',
                 beforeSend: function () {
-                    that.attr('disabled', 'disabled').text('<?php echo esc_js(__('Erstelle...',mmg()->domain)) ?>');
+                    that.prop('disabled', true).text('<?php echo esc_js(__('Erstelle...', mmg()->domain)) ?>');
                 },
                 success: function (data) {
                     var element = that.parent().parent().find('select').first();
@@ -118,10 +119,10 @@
                         html = $(html);
                         var clone = html.find('select[name="' + element.attr('name') + '"]');
                         element.replaceWith(clone);
-                        that.removeAttr('disabled').text('<?php echo esc_js(__('Seite erstellen',mmg()->domain)) ?>');
-                    })
+                        that.prop('disabled', false).text('<?php echo esc_js(__('Seite erstellen', mmg()->domain)) ?>');
+                    });
                 }
-            })
-        })
-    })
+            });
+        });
+    });
 </script>

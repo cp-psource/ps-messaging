@@ -8,7 +8,7 @@
                         <a href="<?php echo esc_url(add_query_arg('box', 'inbox', get_permalink(mmg()->setting()->inbox_page))) ?>"
                            class="mm-tooltip btn btn-default btn-sm <?php echo mmg()->get('box', 'inbox') == 'inbox' ? 'active' : null ?>"
                            title="<?php echo MM_Conversation_Model::count_all() ?> <?php _e("Nachricht(en)", mmg()->domain) ?>">
-                            <i class="fa fa-inbox"></i> <?php _e("Posteingang", mmg()->domain) ?>
+                            <i class="fa fa-inbox"></i> <?php _e("Inbox", mmg()->domain) ?>
                         </a>
                         <a href="<?php echo esc_url(add_query_arg('box', 'unread', get_permalink(mmg()->setting()->inbox_page))) ?>"
                            class="mm-tooltip unread-count btn btn-default btn-sm <?php echo mmg()->get('box') == 'unread' ? 'active' : null ?>"

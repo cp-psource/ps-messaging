@@ -129,28 +129,28 @@ CREATE TABLE IF NOT EXISTS `{$wpdb->base_prefix}mm_status` (<br/>
 </div>
 <script type="text/javascript">
     jQuery(function ($) {
-        $('.fix-table').click(function () {
-            var that = $(this);
-            $.ajax({
-                type: "POST",
-                url: ajaxurl,
-                data: {
-                    action: 'mm_create_table',
-                    _wpnonce: '<?php echo wp_create_nonce('mm_create_table') ?>',
-                    type: that.data('type')
-                },
-                beforeSend: function () {
-                    that.attr('disabled', 'disabled').text('Fixing...');
-                },
-                success: function (data) {
-                    if (data.status == "success") {
-                        location.reload();
-                    } else {
-                        that.removeAttr('disabled').text('Fix');
-                        $('.mmessage-container .alert').html(data.error).removeClass('hide');
-                    }
+    $(document).on('click', '.fix-table', function () {
+        var that = $(this);
+        $.ajax({
+            type: "POST",
+            url: ajaxurl,
+            data: {
+                action: 'mm_create_table',
+                _wpnonce: '<?php echo wp_create_nonce('mm_create_table') ?>',
+                type: that.data('type')
+            },
+            beforeSend: function () {
+                that.prop('disabled', true).text('Fixing...');
+            },
+            success: function (data) {
+                if (data.status == "success") {
+                    location.reload();
+                } else {
+                    that.prop('disabled', false).text('Fix');
+                    $('.mmessage-container .alert').html(data.error).removeClass('hide');
                 }
-            })
-        })
-    })
+            }
+        });
+    });
+});
 </script>

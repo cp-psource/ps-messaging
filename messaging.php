@@ -177,7 +177,7 @@ if (!class_exists('MMessaging')) {
             return false;
         }
 
-        function compress_assets($css = array(), $js = array(), $write_path){
+        function compress_assets($write_path, $css = array(), $js = array()) {
             if (defined('DOING_AJAX') && DOING_AJAX)
                 return;
 

@@ -17,27 +17,27 @@ if (!class_exists('IG_Uploader_Controller')) {
             $this->can_upload = $can_upload;
             if (is_user_logged_in()) {
                 if ($can_upload) {
-                    add_action('wp_loaded', array(&$this, 'handler_upload'));
-                    add_action('wp_ajax_igu_file_delete', array(&$this, 'delete_file'));
-                    add_action('wp_ajax_iup_load_upload_form', array(&$this, 'load_upload_form'));
-                    add_action('wp_enqueue_scripts', array(&$this, 'scripts'));
-                    add_action('admin_enqueue_scripts', array(&$this, 'scripts'));
+                    add_action('wp_loaded', array($this, 'handler_upload'));
+                    add_action('wp_ajax_igu_file_delete', array($this, 'delete_file'));
+                    add_action('wp_ajax_iup_load_upload_form', array($this, 'load_upload_form'));
+                    add_action('wp_enqueue_scripts', array($this, 'scripts'));
+                    add_action('admin_enqueue_scripts', array($this, 'scripts'));
                 }
             }
-            add_filter('igu_single_file_template', array(&$this, 'single_file_template'));
+            add_filter('igu_single_file_template', array($this, 'single_file_template'));
         }
 
-        function scripts()
+        public function scripts()
         {
             wp_enqueue_media();
         }
 
-        function single_file_template()
+        public function single_file_template()
         {
             return '_single_file_land';
         }
 
-        function load_upload_form()
+        public function load_upload_form()
         {
             if (!wp_verify_nonce(ig_uploader()->get('_wpnonce'), 'iup_load_upload_form')) {
                 return;
@@ -57,7 +57,7 @@ if (!class_exists('IG_Uploader_Controller')) {
             exit;
         }
 
-        function delete_file()
+        public function delete_file()
         {
             if (!wp_verify_nonce(ig_uploader()->post('_wpnonce'), 'igu_file_delete')) {
                 return;
@@ -70,7 +70,7 @@ if (!class_exists('IG_Uploader_Controller')) {
             exit;
         }
 
-        function handler_upload()
+        public function handler_upload()
         {
             if (ig_uploader()->get('igu_uploading')) {
                 if (!wp_verify_nonce(ig_uploader()->post('_wpnonce'), 'igu_uploading')) {
@@ -121,7 +121,7 @@ if (!class_exists('IG_Uploader_Controller')) {
                 $ids = $target_model->$attribute;
                 $models = array();
                 if (!is_array($ids)) {
-                    $ids = explode(',', $ids);
+                    $ids = explode(',', $ids ?? '');
                     $ids = array_filter(array_unique($ids));
                 }
                 if (!empty($ids)) {
@@ -143,14 +143,14 @@ if (!class_exists('IG_Uploader_Controller')) {
             }
         }
 
-        function show_media($model, $attribute)
+        public function show_media($model, $attribute)
         {
             wp_enqueue_style('igu-uploader');
             wp_enqueue_script('ig-leanmodal');
             $ids = $model->$attribute;
             $models = array();
             if (!is_array($ids)) {
-                $ids = explode(',', $ids);
+                $ids = explode(',', $ids ?? '');
                 $ids = array_filter(array_unique($ids));
             }
             if (!empty($ids)) {
@@ -213,7 +213,7 @@ if (!class_exists('IG_Uploader_Controller')) {
             ));
         }
 
-        function rearrange($arr)
+        public function rearrange($arr)
         {
             foreach ($arr as $key => $all) {
                 foreach ($all as $i => $val) {
@@ -221,7 +221,7 @@ if (!class_exists('IG_Uploader_Controller')) {
                 }
             }
 
-            return $new;
+            return $new ?? [];
         }
 
         private function build_id($model, $attribute)
@@ -231,7 +231,7 @@ if (!class_exists('IG_Uploader_Controller')) {
             return sanitize_title($class_name . '-' . $attribute);
         }
 
-        function footer_modal()
+        public function footer_modal()
         {
             $this->render('footer_modal', array(
                 'models' => $this->footer_model

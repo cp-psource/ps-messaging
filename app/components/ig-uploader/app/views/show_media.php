@@ -16,7 +16,7 @@
             }).mouseleave(function () {
                 $(this).find('.igu-media-info').addClass('hide');
             });
-            $('.igu-media-info a').click(function (e) {
+            $('.igu-media-info a').on('click', function (e) {
                 e.preventDefault();
             })
         })

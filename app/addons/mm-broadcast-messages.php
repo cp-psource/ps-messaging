@@ -30,26 +30,24 @@ class MM_BroadCast_Messages
         return $model;
     }
 
-    function broadcast_script()
-    {
+    function broadcast_script() {
         ?>
         <script type="text/javascript">
             jQuery(function ($) {
                 var selectize = window.mm_compose_select[0].selectize;
-                $('#mmg-broadcast').click(function () {
-                    if ($(this).is(':checked')) {
+                $(document).on('click', '#mmg-broadcast', function () {
+                    if ($(this).prop('checked')) {
                         selectize.disable();
                     } else {
                         selectize.enable();
                     }
-                })
-            })
+                });
+            });
         </script>
     <?php
     }
 
-    function broadcast_checkbox()
-    {
+    function broadcast_checkbox() {
         ?>
         <label><input type="checkbox" name="broadcast" id="mmg-broadcast">
             <?php _e("Sende diese Nachricht an alle Benutzer", mmg()->domain) ?></label>

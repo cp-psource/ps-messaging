@@ -110,11 +110,11 @@
     <?php endif; ?>
     <script type="text/javascript">
         jQuery(document).ready(function ($) {
-            $('.load-conv').click(function () {
+            $(document).on('click', '.load-conv', function () {
                 var that = $(this);
                 $.ajax({
                     type: 'POST',
-                    url: '<?php echo admin_url('admin-ajax.php?box='.mmg()->get('box')) ?>',
+                    url: '<?php echo admin_url('admin-ajax.php?box=' . mmg()->get('box')) ?>',
                     data: {
                         action: 'mm_load_conversation',
                         id: $(this).data('id'),
@@ -139,16 +139,16 @@
                         var reply_form = $(data.reply_form);
                         $('#reply-form-c').html(reply_form.find('#reply-form-c').html());
                         $('body').trigger('abc');
-                        //reply form
                     }
-                })
+                });
             });
+
             $('body').on('click', '.mm-status', function (e) {
                 e.preventDefault();
                 var that = $(this);
                 var status = $(this).data('type');
                 if (status == '<?php echo MM_Message_Status_Model::STATUS_DELETE ?>') {
-                    if (confirm('<?php echo esc_js(__("Bist du sicher?",mmg()->domain)) ?>')) {
+                    if (confirm('<?php echo esc_js(__("Bist du sicher?", mmg()->domain)) ?>')) {
                         $.ajax({
                             type: 'POST',
                             url: '<?php echo admin_url('admin-ajax.php') ?>',
@@ -159,13 +159,13 @@
                                 type: status
                             },
                             beforeSend: function () {
-                                that.attr('disabled', 'disabled');
+                                that.prop('disabled', true);
                             },
                             success: function () {
                                 $('.load-conv.active').remove();
                                 $('.load-conv').first().trigger('click');
                             }
-                        })
+                        });
                     }
                 } else {
                     $.ajax({
@@ -178,27 +178,25 @@
                             type: status
                         },
                         beforeSend: function () {
-                            that.attr('disabled', 'disabled');
+                            that.prop('disabled', true);
                         },
                         success: function () {
                             $('.load-conv.active').remove();
                             $('.load-conv').first().trigger('click');
                         }
-                    })
+                    });
                 }
+            });
 
-            });
-            $('#mmessage-list').perfectScrollbar({
+            $('#mmessage-list, #mmessage-content').perfectScrollbar({
                 suppressScrollX: true
             });
-            $('#mmessage-content').perfectScrollbar({
-                suppressScrollX: true
-            });
-            //trigger read
-            if ($('.load-conv.active').size() > 0) {
+
+            // Trigger read
+            if ($('.load-conv.active').length > 0) {
                 $('.load-conv.active').first().trigger('click');
             }
-        })
+        });
     </script>
 <?php else: ?>
     <br/>

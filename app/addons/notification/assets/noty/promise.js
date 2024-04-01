@@ -68,7 +68,7 @@ jQuery.extend({
       var q = jQuery.data( elem, type, undefined, true );
       // Speed up dequeue by getting out quickly if this is just a lookup
       if ( data ) {
-        if ( !q || jQuery.isArray(data) ) {
+        if ( !q || Array.isArray(data) ) {
           q = jQuery.data( elem, type, jQuery.makeArray(data), true );
         } else {
           q.push( data );

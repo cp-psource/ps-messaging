@@ -93,17 +93,19 @@ $r_id = 'reply_' . uniqid();
                                 jQuery(document).ready(function ($) {
                                     $('#<?php echo $cid ?>').on('click', '.reply-submit', function () {
                                         //finding the form
-                                        var top_parent = $('#<?php echo $cid ?>')
+                                        var top_parent = $('#<?php echo $cid ?>');
                                         var form = top_parent.find('#<?php echo $fid ?>');
                                         var btn = $('<button type="submit" style="width: 0!important;height:0;display: inline - block;background: none;border: none;padding: 0;margin: 0;position: absolute;"></button>');
                                         form.append(btn);
-                                        btn.click();
+                                        btn.on('click', );
                                     });
+
                                     $('body').on('click', '#<?php echo $bid ?>', function () {
                                         $('#<?php echo $mid ?>').modal({
                                             keyboard: false
-                                        })
+                                        });
                                     });
+
                                     $('body').on('submit', '#<?php echo $fid ?>', function () {
                                         var that = $(this);
                                         $.ajax({
@@ -111,11 +113,11 @@ $r_id = 'reply_' . uniqid();
                                             url: '<?php echo admin_url('admin-ajax.php') ?>',
                                             data: $(that).find(":input").serialize(),
                                             beforeSend: function () {
-                                                that.parent().parent().find('button').attr('disabled', 'disabled');
+                                                that.parent().parent().find('button').prop('disabled', true);
                                             },
                                             success: function (data) {
                                                 that.find('.form-group').removeClass('has-error has-success');
-                                                that.parent().parent().find('button').removeAttr('disabled');
+                                                that.parent().parent().find('button').prop('disabled', false);
                                                 if (data.status == 'success') {
                                                     that.find('.form-control').val('');
                                                     $('#<?php echo $cid ?>').find('.mm-notice').removeClass('hide');
@@ -130,13 +132,13 @@ $r_id = 'reply_' . uniqid();
                                                         if (!$(this).hasClass('has-error')) {
                                                             $(this).addClass('has-success');
                                                         }
-                                                    })
+                                                    });
                                                 }
                                             }
-                                        })
+                                        });
                                         return false;
                                     });
-                                })
+                                });
                             </script>
                         <?php } ?>
                     </div>

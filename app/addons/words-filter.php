@@ -306,7 +306,7 @@ if (!class_exists('MM_Words_Filter')) {
                         })
                         return false;
                     });
-                    $('input[name="is_regex"]').click(function () {
+                    $('input[name="is_regex"]').on('click', function () {
                         var form = $(this).closest('form');
                         if ($(this).prop('checked') == true) {
                             $('.regex-group').removeClass('hide');
@@ -314,7 +314,7 @@ if (!class_exists('MM_Words_Filter')) {
                             $('.regex-group').addClass('hide');
                         }
                     });
-                    $('.test-regex').click(function () {
+                    $('.test-regex').on('click', function () {
                         var form = $(this).closest('form');
                         $.ajax({
                             type: 'POST',
